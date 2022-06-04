@@ -7,8 +7,8 @@ USE prioritizer_db;
 CREATE TABLE votes (
     vote_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     vote VARCHAR(100) NOT NULL,
-    create_date DATE DEFAULT (CURRENT_DATE),
-    start_time DEFAULT NULL
+    create_date DATE DEFAULT(CURRENT_DATE),
+    start_time TIMESTAMP DEFAULT NULL 
 );
 
 
@@ -16,8 +16,8 @@ CREATE TABLE votes (
 CREATE TABLE proposals (
   prop_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   proposal VARCHAR(100) NOT NULL,
-  vote INT NOT NULL 
-      FOREIGN KEY (votes)
+  vote INT, 
+    FOREIGN KEY (vote)
     REFERENCES votes(vote_id)
     ON DELETE SET NULL,
 prop_votes INT DEFAULT 0
