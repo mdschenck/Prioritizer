@@ -1,0 +1,40 @@
+body {
+    font-family: Arial;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start;
+    background-color: #FBEEC1;
+  }
+
+  main {
+    margin: 30px;
+  }
+
+  .jumbotron {
+
+    background-color: #659DBD;
+    color: #FBEEC1;
+    margin: 0px;
+
+  }
+
+ nav {
+    background-color: #8D8741;
+    
+  }
+
+  .nav-item, .navbar-brand {
+    color: #FBEEC1;
+  }
+
+  thead {
+      background-color: #659DBD;
+  }
+
+  .btn-background {
+    background-color: #659DBD;
+  }
+
+  
+
