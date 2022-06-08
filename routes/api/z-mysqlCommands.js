@@ -33,7 +33,7 @@ ORDER BY prop_id ASC
 // Proposals Routes - ?? Not sure - PUT? 
 // Start Vote 
 
-`UPDATE votes SET start_time = TIMESTAMP WHERE vote_id = ${CURRENT_VOTE}`
+`UPDATE votes SET start_time = CURRENT_TIMESTAMP WHERE vote_id = ${CURRENT_VOTE}`
 
 // Results Routes - GET:
 // Show All Proposals & Vote Results: 
