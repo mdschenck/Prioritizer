@@ -1,8 +1,6 @@
 // Vote Routes - PUT:
 // Add vote to proposal:
 
-const { values } = require("sequelize/types/lib/operators")
-
 If (user.votes_remaining >= 1) {
 
 `UPDATE proposals SET prop_votes = prop_votes + 1 WHERE prop_id = ${PROP_ID};`
