@@ -11,6 +11,10 @@ body {
     margin: 30px;
   }
 
+  .card {
+    background-color: #FBEEC1;
+  }
+
   .jumbotron {
 
     background-color: #659DBD;
@@ -32,9 +36,10 @@ body {
       background-color: #659DBD;
   }
 
-  .btn-background {
-    background-color: #659DBD;
+  .card-header {
+    background-color: #659DBD;  
   }
+
 
   
 
