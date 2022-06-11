@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const db = require('../config/connection.js'); 
+const db = require('../../config/connection.js'); 
 
 router.get('/users', (req, res) => {
   const sql = `select users.id, users.name`;
