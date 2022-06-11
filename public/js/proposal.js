@@ -14,5 +14,5 @@ const newPostHandler = async (evt) => {
   };
   
   document
-    .querySelector('#create-proposal-button')
+    .querySelector('#create-proposal-form')
     .addEventListener('submit', newPostHandler);
