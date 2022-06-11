@@ -1,0 +1,13 @@
+<div class="mainideas">
+  <h3>Current Proposal</h3>
+  <!-- Loop over each object in the proposals array  -->
+  {{#each proposals as |proposal|}}
+    <div class="mainproposals">
+      {{proposal.proposal}}
+    </div>
+  {{/each}}
+</div>
+<div>
+  <button type="submit" class="btn btn-primary" id="add-proposal-button">Add Proposal</button>
+  <button type="submit" class="btn btn-primary" id="start-vote-button">Start Voting</button>
+</div>

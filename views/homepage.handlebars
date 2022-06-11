@@ -4,4 +4,12 @@
   <p>Rake Yard</p>
   <p>Mow Lawn</p>
   <p>Go Fishing</p>
+
 </div>
+
+<!-- Loop over each object in the proposals array  -->
+{{#each proposals as |proposal|}}
+  <div class="mainproposals">
+    {{proposal.proposal}}
+  </div>
+{{/each}}
