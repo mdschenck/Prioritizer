@@ -1,20 +1,23 @@
 // import models
-// const Product = require('./Product');
-// const Category = require('./Category');
-// const Tag = require('./Tag');
-// const ProductTag = require('./ProductTag');
+const Vote = require("./Vote");
+const Proposal = require("./Proposal");
+const User = require("./User");
 
-// Products belongsTo Category
+// Proposal belongsTo Votes
 
-// Categories have many Products
+Proposal.belongsTo(Vote, {
+  foreignKey: "vote_id",
+  onDelete: "cascade",
+});
 
-// Products belongToMany Tags (through ProductTag)
+// Votes have many Proposals
 
-// Tags belongToMany Products (through ProductTag)
+Vote.hasMany(Proposal, {
+  foreignKey: "vote_id",
+});
 
-// module.exports = {
-//   Product,
-//   Category,
-//   Tag,
-//   ProductTag,
-// };
+module.exports = {
+  Vote,
+  Proposal,
+  User,
+};
