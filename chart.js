@@ -1,12 +1,11 @@
-// import { Chart, registerables } from "chart.js";
-// Chart.register(...registerables);
+import { Chart, registerables } from "chart.js";
+Chart.register(...registerables);
 
 var click = document.getElementById("chartHolder");
 const ctx = document.getElementById("resultsChart");
 const Chart = require("chart.js");
 
-function createChart() {
-  console.log("Create Chart Called");
+
   const myChart = new Chart(ctx, {
     type: "doughnut",
     labels: ["Proposal 1", "Proposal 2", "Proposal3", "Proposal4", "Proposal5"],
@@ -32,9 +31,7 @@ function createChart() {
   });
 }
 
-// Click.addEventListener("click", function (event) {
-createChart();
-// });
+
 // const config = {
 //   type: "donut",
 //   data: data,
