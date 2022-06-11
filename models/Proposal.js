@@ -18,14 +18,12 @@ Proposal.init(
     vote_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      // references: {
-      //   model: "vote",
-      //   key: "id",
-      // },
+      defaultValue: 1,  // <-- ** NEED TO REMOVE IF MORE THAN 1 VOTE IS NEEDED **
     },
     prop_votes: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
     },
   },
   {
