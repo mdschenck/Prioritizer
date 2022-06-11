@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Proposal extends Model {}
+class Vote extends Model {}
 
-Proposal.init(
+Vote.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,29 +11,26 @@ Proposal.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    proposal: {
+    vote: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    vote_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      // references: {
-      //   model: "vote",
-      //   key: "id",
-      // },
-    },
-    prop_votes: {
-      type: DataTypes.INTEGER,
+    create_date: {
+      type: DataTypes.DATE,
       allowNull: false,
+      //   defalut: CURRENT_DATE,
+    },
+    start_time: {
+      type: DataTypes.TIME,
+      allowNull: true,
     },
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "proposal",
+    modelName: "vote",
   }
 );
 
-module.exports = Proposal;
+module.exports = Vote;
