@@ -1,36 +1,62 @@
-const router = require('express').Router();
-const db = require('../config/connection.js'); 
+const router = require("express").Router();
+const db = require("../../config/connection.js");
+const Proposal = require("../../models/Proposal.js");
+const Sequelize = require("sequelize");
 
-router.get('/proposals', (req, res) => {
-  const sql = `SELECT * FROM proposals`;
-  db.query(sql, (err, rows) => {
-    if (err) {
-      res.status(500).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: rows
+router.get("/", async (req, res) => {
+  try {
+    Proposal.findAll().then((proposalData) => {
+      res.json(proposalData);
     });
-  });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-
-router.get('/proposal/:id', (req, res) => {
-  const sql = `SELECT * FROM proposals WHERE id = ?`;
-  const params = [req.params.id];
-  db.query(sql, params, (err, row) => {
-    if (err) {
-      res.status(400).json({ error: err.message });
-      return;
-    }
-    res.json({
-      message: 'success',
-      data: row
+// find one proposal by its `id` value
+router.get("/:id", (req, res) => {
+  try {
+    Proposal.findOne({
+      where: {
+        id: req.params.id,
+      },
+    }).then((proposalData) => {
+      res.json(proposalData);
     });
-  });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
+// create a new proposal
+router.post("/:proposal", (req, res) => {
+  Proposal.create({
+    proposal: req.params.proposal,
+  })
+    .then((newProposal) => {
+      // Send the newly created row as a JSON object
+      res.json(newProposal);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 
+router.put("/upVote/:id", (req, res) => {
+  Proposal.update(
+    {
+      prop_votes: Sequelize.literal("Proposal.prop_votes + 1"),
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((updatedProposal) => {
+      res.json(updatedProposal);
+    })
+    .catch((err) => res.json(err));
+});
 
 module.exports = router;

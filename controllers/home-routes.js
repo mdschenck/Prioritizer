@@ -13,7 +13,7 @@ const Proposal = require("../models/Proposal");
 
 router.get("/", async (req, res) => {
   try {
-    // Get all posts and JOIN with user data
+    // Get all proposal
     const proposalData = await Proposal.findAll({});
 
     // Serialize data so the template can read it

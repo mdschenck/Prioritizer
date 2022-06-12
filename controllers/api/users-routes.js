@@ -1,35 +1,64 @@
-const router = require('express').Router();
-const db = require('../config/connection.js'); 
+const router = require("express").Router();
+const Sequelize = require("sequelize");
+const db = require("../../config/connection.js");
+const User = require("../../models/User.js");
 
-router.get('/users', (req, res) => {
-  const sql = `select users.id, users.name`;
-
-  db.query(sql, (err, rows) => {
-      if (err) {
-          res.status(500).json({ error: err.message });
-          return;
-      }
-      res.json({
-          message: 'success',
-          data: rows,
-      });
-  });
+// Get all users
+router.get("/", async (req, res) => {
+  try {
+    User.findAll().then((userData) => {
+      res.json(userData);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.get('/user/:id', (req, res) => {
-  const sql = `select users.id,users.name WHERE users.id = ?`;
-  const params = [req.params.id];
+// find one user by its `id` value
+router.get("/:id", (req, res) => {
+  try {
+    User.findOne({
+      where: {
+        id: req.params.id,
+      },
+    }).then((userData) => {
+      res.json(userData);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-  db.query(sql, params, (err, row) => {
-      if (err) {
-          res.status(400).json({ error: err.message });
-          return;
-      }
-      res.json({
-          message: 'success',
-          data: row
-      });
-  });
+// create a new user
+router.post("/:name", (req, res) => {
+  User.create({
+    name: req.params.name,
+  })
+    .then((newUser) => {
+      // Send the newly created row as a JSON object
+      res.json(newUser);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+
+// update a user's vote count -1 when vote is cast / by user `id` value
+router.put("/castVote/:id", (req, res) => {
+  User.update(
+    {
+      votes_remaining: Sequelize.literal("User.votes_remaining - 1"),
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((updatedUser) => {
+      res.json(updatedUser);
+    })
+    .catch((err) => res.json(err));
 });
 
 module.exports = router;
