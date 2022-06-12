@@ -37,3 +37,5 @@ const Chart = require("chart.js");
 //   data: data,
 //   options: {}
 // }
+
+module.exports = myChart
