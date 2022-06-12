@@ -58,12 +58,12 @@ router.get("/votes", (req, res) => {
 });
 
 router.get("/results", (req, res) => {
-  res.render("votes", {
+  res.render("results", {
     logged_in: true,
   });
 
   // TESTING CHART FUNCTION --
-  myChart();
+  myChart;
   // END CHARD FUNCTION --
 });
 
