@@ -1,6 +1,11 @@
 const router = require("express").Router();
 const Proposal = require("../models/Proposal");
 
+// IMPORTS FOR CHART FUNCTIONS--------:
+const { myChart } = require("../utils/chart.js");
+
+// END IMPORTS FOR CHART FUNCTIONS -------
+
 // route to get all Proposals
 // router.get('/', async (req, res) => {
 
@@ -50,6 +55,16 @@ router.get("/votes", (req, res) => {
   res.render("votes", {
     logged_in: true,
   });
+});
+
+router.get("/results", (req, res) => {
+  res.render("votes", {
+    logged_in: true,
+  });
+
+  // TESTING CHART FUNCTION --
+  myChart();
+  // END CHARD FUNCTION --
 });
 
 module.exports = router;
