@@ -1,4 +1,15 @@
-// const Proposal = require("../models/Proposal");
+// const Proposal = require("../../models/Proposal.js");
+// const Sequelize = require("sequelize");
+
+// router.get("/", async (req, res) => {
+//   try {
+//     Proposal.findAll().then((proposalData) => {
+//       res.json(proposalData);
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 var prop_votes = [2, 1, 7, 3];
 // For drawing the lines
