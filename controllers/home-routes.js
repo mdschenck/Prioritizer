@@ -39,11 +39,35 @@ router.get("/create-proposal", (req, res) => {
 });
 
 // Get proposals page
-router.get("/proposals", (req, res) => {
-  res.render("proposals", {
-    logged_in: true,
-  });
+// router.get("/proposals", (req, res) => {
+//   res.render("proposals", {
+//     logged_in: true,
+//   });
+// });
+
+router.get("/proposals", async (req, res) => {
+  try {
+    // Get all proposal
+    const proposalData = await Proposal.findAll({});
+
+    // Serialize data so the template can read it
+    const proposals = proposalData.map((proposal) =>
+      proposal.get({ plain: true })
+    );
+
+    // Pass serialized data and session flag into template
+    res.render("proposals", {
+      proposals,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+
+
+
 
 // Get votes page
 router.get("/votes", (req, res) => {
