@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../public/css/jass.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../public/css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <title>The Prioritizer</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <a class="navbar-brand" href="#">The Prioritizer</a>
+          <a class="nav-item nav-link ml-auto" href="#">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+
+    <main>
+      <row class="container">
+        <table class="table table-bordered col s-7">
+            <thead>
+              <tr>
+                <th scope="col">Proposal</th>
+                <th scope="col">Final Vote Count</th>
+               </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Paint House</td>
+                <td>**</td>
+              </tr>
+              <tr>
+                <td>Mow Lawn</th>
+                <td>*</td>
+              </tr>
+              <tr>
+                <td>Rake yard</th>
+                <td>*******</td>
+              </tr>
+              <tr>
+                <td>GoFishing</th>
+                <td>***</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- RESULTS GRAPH CANVAS PLACEHOLDER -->
+
+          <div id="chartHolder" class="col s-5" height="400">
+            <canvas id="resultsChart" width="400" height="400" aria-label="Votes Results Graph" role="img"></canvas>
+          </div>
+        </row>
+        <script>
+          new Chart(document.getElementById("resultsChart"), {
+    type: 'doughnut',
+    data: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: [2478,5267,734,784,433]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Predicted world population (millions) in 2050'
+      }
+    }
+});
+        </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

@@ -52,4 +52,10 @@ router.get("/votes", (req, res) => {
   });
 });
 
+router.get("/results", (req, res) => {
+  res.render("results", {
+    logged_in: true,
+  });
+});
+
 module.exports = router;
