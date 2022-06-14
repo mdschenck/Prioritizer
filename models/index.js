@@ -10,6 +10,8 @@ Proposal.belongsTo(Vote, {
   onDelete: "cascade",
 });
 
+//I think Proposal should have many Votes as well
+
 // Votes have many Proposals
 
 Vote.hasMany(Proposal, {

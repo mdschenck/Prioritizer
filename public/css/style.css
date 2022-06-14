@@ -45,5 +45,26 @@ body {
     font-size: 20px;
   }
 
+  .buttonstyle {
+    display: inline-grid;
+    height: 50px;
+    width: 180px;
+    background-color: #659DBD;
+    /* margin: auto; */
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-family: sans-serif;
+    place-items: center;
+    color:#FBEEC1;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 2px;
+    border-radius: 5px;
+
+
+  }
   
 

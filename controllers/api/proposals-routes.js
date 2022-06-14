@@ -1,7 +1,8 @@
 const router = require("express").Router();
-const db = require("../../config/connection.js");
-const Proposal = require("../../models/Proposal.js");
-const Sequelize = require("sequelize");
+// const db = require("../../config/connection.js");
+// const Proposal = require("../../models/Proposal.js");
+// const Sequelize = require("sequelize");
+const { Proposal } = require('../../models');
 
 router.get("/", async (req, res) => {
   try {
@@ -29,17 +30,30 @@ router.get("/:id", (req, res) => {
 });
 
 // create a new proposal
-router.post("/:proposal", (req, res) => {
-  Proposal.create({
-    proposal: req.params.proposal,
-  })
-    .then((newProposal) => {
-      // Send the newly created row as a JSON object
-      res.json(newProposal);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
+// router.post("/:proposal", (req, res) => {
+//   Proposal.create({
+//     proposal: req.params.proposal,
+//   })
+//     .then((newProposal) => {
+//       // Send the newly created row as a JSON object
+//       res.json(newProposal);
+//     })
+//     .catch((err) => {
+//       res.json(err);
+//     });
+// });
+
+router.post('/', async (req, res) => {
+  try {
+    const newProposal = await Proposal.create({
+      ...req.body,
+      // user_id: req.session.user_id,
+     });
+
+    res.status(200).json(newProposal);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 router.put("/upVote/:id", (req, res) => {
