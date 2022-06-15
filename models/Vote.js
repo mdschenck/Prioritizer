@@ -15,11 +15,11 @@ Vote.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    create_date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      //   defalut: CURRENT_DATE,
-    },
+    // create_date: {
+    //   type: DataTypes.DATE,
+    //   allowNull: false,
+    //   default: CURRENT_DATE,
+    // },
     start_time: {
       type: DataTypes.TIME,
       allowNull: true,
