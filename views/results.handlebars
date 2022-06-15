@@ -9,22 +9,20 @@
                </tr>
             </thead>
             <tbody>
+                <!-- Loop over each object in the proposals array  -->
                 {{#each proposals as |proposal|}}
               <tr>
                 <td>{{proposal.proposal}}</td>
                 <td>**</td>
               </tr>
+              {{/each}}
             </tbody>
           </table>
           </div>
 
           <div class="mainideas">
   <!-- Loop over each object in the proposals array  -->
-    <div class="mainproposals">
-      {{proposal.proposal}}
-    </div>
-  {{/each}}
-</div>
+
 
           <!-- RESULTS GRAPH CANVAS PLACEHOLDER -->
 

@@ -56,21 +56,21 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put("/upVote/:id", (req, res) => {
-  Proposal.update(
-    {
-      prop_votes: Sequelize.literal("Proposal.prop_votes + 1"),
-    },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
-    .then((updatedProposal) => {
-      res.json(updatedProposal);
-    })
-    .catch((err) => res.json(err));
-});
+// router.put("/upVote/:id", (req, res) => {
+//   Proposal.update(
+//     {
+//       prop_votes: Sequelize.literal("Proposal.prop_votes + 1"),
+//     },
+//     {
+//       where: {
+//         id: req.params.id,
+//       },
+//     }
+//   )
+//     .then((updatedProposal) => {
+//       res.json(updatedProposal);
+//     })
+//     .catch((err) => res.json(err));
+// });
 
 module.exports = router;
