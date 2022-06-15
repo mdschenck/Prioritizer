@@ -1,9 +1,9 @@
-    <main>
-      <row>
-        <div class="col-7 mainideas" height="400">
+  
+      <div class="col-7 mainideas" height="400">
         <table class="table table-bordered">
             <thead>
               <tr>
+                <th scope="col">ID</th>
                 <th scope="col">Proposal</th>
                 <th scope="col">Final Vote Count</th>
                </tr>
@@ -12,23 +12,18 @@
                 <!-- Loop over each object in the proposals array  -->
                 {{#each proposals as |proposal|}}
               <tr>
-                <td>{{proposal.proposal}}</td>
-                <td>**</td>
+                <td id="{{proposal.id}}">{{proposal.id}}</td>
+                <td id="p{{proposal.id}}">{{proposal.proposal}}</td>
+                <td id="pv{{proposal.id}}">{{proposal.prop_votes}}</td>
               </tr>
               {{/each}}
             </tbody>
           </table>
-          </div>
+          </div> 
 
-          <div class="mainideas">
-  <!-- Loop over each object in the proposals array  -->
-
-
-          <!-- RESULTS GRAPH CANVAS PLACEHOLDER -->
-
-          <div id="chartHolder" class="col-5" height="400">
+           <div id="chartHolder" class="col-5" height="400">
             <canvas id="myChart" width="400" height="400"></canvas>
           </div>
         </row>
-        
-    </main>
+       
+    <script src="../js/chart.js"></script>
