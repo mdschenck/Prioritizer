@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="upgrade-insecure-requests"
-    />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="/css/style.css" />
 
-    <title>The Prioritizer</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg">
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <a class="navbar-brand" href="/">The Prioritizer</a>
-          <a class="nav-item nav-link ml-auto" href="#">Login</a>
-        </div>
-      </div>
-    </nav>
+<head>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>The Prioritizer</title>
+</head>
 
-    <div class="jumbotron">
-      <h1 class="display-4">The Prioritizer</h1>
-      <p>Log in to contribute proposals for prioritization and vote!</p>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      {{#if loggedIn}}
+      <a class="navbar-brand" href="/">Home</a>
+      <a class="navbar-brand" href="/create-proposal">Create-Proposal</a>
+      <a class="navbar-brand" href="/proposals">Proposals</a>
+      <a class="navbar-brand" href="/results">Results</a>
+      <a class="navbar-brand" href="/votes">Votes</a>
+      <button id="logout" class="btn-no-style">Logout</button>
+      {{else}}
+      <a class="navbar-brand" href="/login">Login</a>
+      {{/if}}
     </div>
+  </nav>
+
+  <div class="jumbotron">
+    <h1 class="display-4">The Prioritizer</h1>
+    {{#unless loggedIn}}
+    <p>Log in to contribute proposals for prioritization and vote!</p>
+    {{/unless}}
+  </div>
   <main>
-
-      {{{body}}}
-
+    {{{body}}}
   </main>
-    {{!-- <script src="../../utils/chart.js"></script> --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+  {{!--
+  <script src="../../utils/chart.js"></script> --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-  </body>
+</body>
+
 </html>
