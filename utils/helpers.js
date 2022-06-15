@@ -41,6 +41,7 @@ module.exports = {
             if (distance < 0) {
                 clearInterval(x);
 
+
                 document.getElementById("demo").innerHTML =
                     "Voting has ended for this set of proposals. Click <a href='/results'>Here</a> to view results.";
             }
@@ -52,3 +53,4 @@ module.exports = {
         return accum;
     },
 };
+

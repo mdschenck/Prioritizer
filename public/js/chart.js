@@ -11,23 +11,25 @@ var propvotes4 = document.getElementById("pv4");
 var propvotes5 = document.getElementById("pv5");
 
 var prop_votes = [
-    propvotes1.textContent,
-    propvotes2.textContent,
-    propvotes3.textContent,
-    propvotes4.textContent,
-    propvotes5.textContent,
-];
-// For drawing the lines
-var proposals = [
-    prop1.textContent,
-    prop2.textContent,
-    prop3.textContent,
-    prop4.textContent,
-    prop5.textContent,
+//     propvotes1.textContent,
+//     propvotes2.textContent,
+//     propvotes3.textContent,
+//     propvotes4.textContent,
+//     propvotes5.textContent,
+// ];
+// // For drawing the lines
+// var proposals = [
+//     prop1.textContent,
+//     prop2.textContent,
+//     prop3.textContent,
+//     prop4.textContent,
+//     prop5.textContent,
+
 ];
 
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
+
     type: "doughnut",
     data: {
         labels: proposals,
@@ -46,3 +48,4 @@ var myChart = new Chart(ctx, {
         maintainAspectRatio: false,
     },
 });
+
