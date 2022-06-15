@@ -7,24 +7,24 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
-// import packages http, https, fs for https. To create self cert do this from the command line $ openssl req -nodes -new -x509 -keyout server.key -out server.cert
-const https = require('https');
+// // import packages http, https, fs for https. To create self cert do this from the command line $ openssl req -nodes -new -x509 -keyout server.key -out server.cert
+// const https = require('https');
 const http = require('http');
-const fs = require('fs');
-//Using a custom signature algorithm for the session.keys; the keygrip library most be installed with npm: $ npm install keygrip 
-var Keygrip = require('keygrip')
-    // bringin-on the 'connect-session-sequelize' library, and setting it up with (session.Store). That is going to store session information in the database 
+// const fs = require('fs');
+// //Using a custom signature algorithm for the session.keys; the keygrip library most be installed with npm: $ npm install keygrip 
+// var Keygrip = require('keygrip')
+// bringin-on the 'connect-session-sequelize' library, and setting it up with (session.Store). That is going to store session information in the database 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 // 8080 is the http port 
-const PORT = process.env.PORT || 8080;
-// 8088 is the httpS port 
-const sPORT = process.env.PORT || 8088;
+const PORT = process.env.PORT || 3001;
+// // 8088 is the httpS port 
+// const sPORT = process.env.PORT || 8088;
 // Set up sessions with cookies 
 const sess = {
     name: 'h4K3',
     secret: 'Super secret secret',
-    keys: new Keygrip(['key1', 'key2'], 'SHA512', 'SHA384'),
+    // keys: new Keygrip(['key1', 'key2'], 'SHA512', 'SHA384'),
     cookie: {
         // Stored in milliseconds (86400 === 1 day)
         maxAge: 86400,
@@ -52,10 +52,10 @@ By default, sameSite was initially set to none (sameSite = None). This allowed t
 
 const httpServer = http.createServer(app);
 // To create self certs do this from the command line (on windows): $ openssl req -nodes -new -x509 -keyout server.key -out server.cert. I had to add the certs on my activity folder. below the cert names do not have any directory because the certs are on the root directory of this activity: 14-MVC\01-Activities\17-Ins_Cookies\server.cert 
-const httpsServer = https.createServer({
-    key: fs.readFileSync("server.key"),
-    cert: fs.readFileSync("server.cert"),
-}, app);
+// const httpsServer = https.createServer({
+//     key: fs.readFileSync("server.key"),
+//     cert: fs.readFileSync("server.cert"),
+// }, app);
 // Set up sessions
 app.use(session(sess));
 
@@ -74,7 +74,7 @@ sequelize.sync({ force: false }).then(() => {
     httpServer.listen(PORT, () => {
         console.log(`\nhttp Server running on port ${PORT}. Visit http://localhost:${PORT} and create an account!`);
     });
-    httpsServer.listen(sPORT, () => {
-        console.log(`\nhttpS Server running on port ${sPORT}. Visit httpS://localhost:${sPORT} and create an account!`);
-    });
+    // httpsServer.listen(sPORT, () => {
+    //     console.log(`\nhttpS Server running on port ${sPORT}. Visit httpS://localhost:${sPORT} and create an account!`);
+    // });
 });
