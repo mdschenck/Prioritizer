@@ -1,6 +1,6 @@
     <main>
       <row>
-        <div class="col-7" height="400">
+        <div class="col-7 mainideas" height="400">
         <table class="table table-bordered">
             <thead>
               <tr>
@@ -9,25 +9,23 @@
                </tr>
             </thead>
             <tbody>
+                {{#each proposals as |proposal|}}
               <tr>
-                <td>Paint House</td>
+                <td>{{proposal.proposal}}</td>
                 <td>**</td>
-              </tr>
-              <tr>
-                <td>Mow Lawn</th>
-                <td>*</td>
-              </tr>
-              <tr>
-                <td>Rake yard</th>
-                <td>*******</td>
-              </tr>
-              <tr>
-                <td>Go Fishing</th>
-                <td>***</td>
               </tr>
             </tbody>
           </table>
           </div>
+
+          <div class="mainideas">
+  <!-- Loop over each object in the proposals array  -->
+    <div class="mainproposals">
+      {{proposal.proposal}}
+    </div>
+  {{/each}}
+</div>
+
           <!-- RESULTS GRAPH CANVAS PLACEHOLDER -->
 
           <div id="chartHolder" class="col-5" height="400">
@@ -36,5 +34,3 @@
         </row>
         
     </main>
-{{!-- Chart Script - not finding - need to go in main??  --}}
-    <script src="../utils/chart.js"></script>  
