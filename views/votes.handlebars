@@ -1,12 +1,57 @@
 <div class="timeremaining">
-  <p>Voting in Progress</p>
-  <p>10:42 Remaining</p>
+  <p>Voting in Progress! </p>
+<p id="demo"></p>
+
+    {{!-- <button onclick="countdownTimeStart()">Start Timer</button> --}}
+
+    <script>
+      // Set the date we're counting down to
+
+      function countdownTimeStart() {
+        var currentDate = new Date().getTime();
+        var countDownDate = currentDate + 20000;
+        //8.64e7;
+        // new Date("Sep 25, 2025 15:00:00").getTime(); <--** to set to a specific date comment out above two lines and set here.
+
+        // Update the count down every 1 second
+
+        var x = setInterval(function () {
+          // Get todays date and time
+
+          var now = new Date().getTime();
+          // Find the distance between now an the count down date
+          var distance = countDownDate - now;
+          // Time calculations for days, hours, minutes and seconds
+
+          var hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Output the result in an element with id="demo"
+
+          document.getElementById("demo").innerHTML =
+            hours + "h " + minutes + "m " + seconds + "s ";
+
+          // If the count down is over, write some text
+
+          if (distance < 0) {
+            clearInterval(x);
+
+            document.getElementById("demo").innerHTML =
+              "Voting for this set of proposals has ended. <a href='/results'>View Results</a>";
+          }
+        }, 1000);
+      }
+      countdownTimeStart();
+    </script>
 </div>
-<div class="user">
+{{!-- <div class="user">
   <p>User: Michael</p>
-</div>
+</div> --}}
 <div class="votes">
-  <p><span class="votescast">3</span> Votes cast<span class="votesremaining"> 2</span> Votes remaining</p>
+  {{!-- <p><span class="votescast">3</span> Votes cast<span class="votesremaining"> 2</span> Votes remaining</p> --}}
 
 
   <div class="col-12 mainideas" height="400">
@@ -37,7 +82,7 @@
             </svg>
             {{/times}}
           </td>
-          <td><a class="buttonstyle" id="{{proposal.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          <td><a class="buttonstyle" id="b{{proposal.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 fill="currentColor" class="bi bi-check-square-fill" viewBox="0 0 16 16">
                 <path
                   d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 1 .011 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.75.75 0 0 1 1.08-.022z" />
@@ -51,7 +96,7 @@
 
 
 
-  <script src "/js/vote.js"></script>
+  <script src="../js/vote.js"></script>
 
    
 
