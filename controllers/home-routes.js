@@ -63,7 +63,7 @@ router.get("/votes", withAuth, async(req, res) => {
         // Pass serialized data and session flag into template
         res.render("votes", {
             proposals,
-            logged_in: req.session.loggedIn,
+            loggedIn: req.session.loggedIn,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -83,7 +83,7 @@ router.get("/results", withAuth, async(req, res) => {
         // Pass serialized data and session flag into template
         res.render("results", {
             proposals,
-            logged_in: req.session.loggedIn,
+            loggedIn: req.session.loggedIn,
         });
     } catch (err) {
         res.status(500).json(err);
