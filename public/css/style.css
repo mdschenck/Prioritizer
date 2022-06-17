@@ -71,3 +71,34 @@ body {
 #myChart {
   margin-right: 0px,
 }
+
+.table {
+  background-color: white;
+}
+
+.card {
+  background-color: white;
+}
+
+.form-group {
+  width: 90%;
+  margin-left: 5%;
+}
+
+#create-proposal-button {
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+
+.voteButton {
+  width: 90%;
+  margin-left:5%;
+}
+
+#logo {
+  height: 85px;
+  width: 85px;
+  position: absolute;
+  margin-top: 00px;
+  margin-left: 80%;
+}
