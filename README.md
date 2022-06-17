@@ -20,10 +20,15 @@ The application allows users to list proposed features for consideration and the
 
 # Screenshots
 
-![Screenshot  of welcome screen:](./public/images/prioritizer-welcome-screenshot.png)
+![Screenshot  of welcome screen:](./public/images/prioritizer-welcome-screenshot.JPG)
 
-![Screenshot  of proposals screen:](./public/images/prioritizer-initiatives-screenshot.png)
+![Screenshot  of login screen:](./public/images/prioritizer-login-screenshot.JPG)
 
+![Screenshot  of proposals screen:](./public/images/prioritizer-proposals-screenshot.JPG)
+
+![Screenshot  of proposals screen:](./public/images/prioritizer-votes-screenshot.JPG)
+
+![Screenshot  of proposals screen:](./public/images/prioritizer-results-screenshot.JPG)
 
 # Links
 
@@ -47,7 +52,7 @@ The application is live on [Heroku](https://infinite-coast-94356.herokuapp.com/)
 
 - As a user, I want to see a final prioritized list of ideas ranked in order of which idea got the most votes.
 
-# Technologies 
+# Technologies
 
 - Node.js
 - Express.js
@@ -78,6 +83,7 @@ The following acceptance criteria were met for the project:
 # Team
 
 The following team members contributed to this application:
+
 - Andres Sierra
 - Michael Schenck
 - Misty Duhart
