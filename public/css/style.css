@@ -73,9 +73,24 @@ body {
 }
 
 .table {
-  background-color: azure;
+  background-color: white;
 }
 
 .card {
-  background-color: azure;
+  background-color: white;
+}
+
+.form-group {
+  width: 90%;
+  margin-left: 5%;
+}
+
+#create-proposal-button {
+  margin-left: 5%;
+  margin-bottom: 1%;
+}
+
+.voteButton {
+  width: 90%;
+  margin-left:5%;
 }
