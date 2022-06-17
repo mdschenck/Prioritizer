@@ -20,7 +20,7 @@ body {
     background-color: #659DBD;
     color: #FBEEC1;
     margin: 0px;
-    max-height: 150px;
+    max-height: 170px;
 
   }
 
@@ -70,4 +70,12 @@ body {
 
 #myChart {
   margin-right: 0px,
+}
+
+.table {
+  background-color: azure;
+}
+
+.card {
+  background-color: azure;
 }
