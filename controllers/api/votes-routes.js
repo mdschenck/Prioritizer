@@ -46,7 +46,7 @@ router.put("/startVote/:id", (req, res) => {
   // update a vote with vote start time, by its `id` value
   Vote.update(
     {
-      start_time: Sequelize.literal("CURRENT_TIMESTAMP"),
+      start_time: Sequelize.literal("CURRENT_TIMESTAMP + INTERVAL 1 DAY"),
     },
     {
       where: {
