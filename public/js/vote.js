@@ -1,6 +1,4 @@
-const currentTime = require("moment.js");
-
-document.getElementById("current_time").innerHTML = currentTime;
+// const currentTime = document.getElementById("current_time").textContent
 
 const upVoteHandler = async (evt) => {
   evt.preventDefault();
