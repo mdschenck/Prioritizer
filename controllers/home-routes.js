@@ -56,22 +56,25 @@ router.get("/votes", withAuth, async (req, res) => {
     const proposalData = await Proposal.findAll({});
     const voteData = await Vote.findAll({});
 
-    const proposalsAndVoteData = { proposalData, voteData };
+    // ***ATTEMPTING TO COMBINE THE PROPOSAL AND VOTE MODEL DATA INTO A NEW OBJECT -- This isn't working...
 
     // Serialize data so the template can read it
 
-    // const proposals = proposalData.map((proposal) =>
-    //   proposal.get({ plain: true })
-    // );
-
-    const proposalsAndVotes = proposalsAndVoteData.map((proposal) =>
+    const proposals = proposalData.map((proposal) =>
       proposal.get({ plain: true })
     );
 
+    const votes = voteData.map((vote) => vote.get({ plain: true }));
+
+    // COMBINE MAPPED OBJECTS INTO NEW OBJECT?? **This ALSO does not work... 
+    // const pvCombine = Object.fromEntries(proposalData, voteData);
+
+    // const pvdata = pvCombine.map((pvdata) => pvdata.get({ plain: true }));
+
     // Pass serialized data and session flag into template
     res.render("votes", {
-      proposalsAndVotes,
-      //   proposals,
+      // pvdata,
+        proposals,
       // votes,
       loggedIn: req.session.loggedIn,
     });
