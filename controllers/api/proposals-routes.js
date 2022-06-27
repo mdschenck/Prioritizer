@@ -1,7 +1,7 @@
 const router = require("express").Router();
-// const db = require("../../config/connection.js");
+const db = require("../../config/connection.js");
 // const Proposal = require("../../models/Proposal.js");
-// const Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 const { Proposal } = require("../../models");
 
 router.get("/", async (req, res) => {
@@ -56,21 +56,31 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/upVote/:id", (req, res) => {
-  Proposal.update(
-    {
-      prop_votes: Sequelize.literal("Proposal.prop_votes + 1"),
-    },
-    {
-      where: {
-        id: req.params.id,
+router.put("/", async (req, res) => {
+  try {
+    const proposalData = await Proposal.update(
+      {
+        prop_votes: req.body.propVotes,
       },
+      {
+        where: {
+          id: req.body.id,
+        },
+        // ...req.body,
+      }
+    );
+
+    if (!proposalData) {
+      res
+        .status(404)
+        .json({ message: "No proposal found to update with this id!" });
+      return;
     }
-  )
-    .then((updatedProposal) => {
-      res.json(updatedProposal);
-    })
-    .catch((err) => res.json(err));
+
+    res.status(200).json(proposalData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
